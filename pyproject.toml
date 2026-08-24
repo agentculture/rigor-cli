@@ -1,6 +1,6 @@
 [project]
 name = "rigor-cli"
-version = "0.6.1"
+version = "0.7.0"
 description = "A tool for performing logic against a ledger, so reasoning stays tractable and provable. Every premise, rule application and conclusion is recorded as an append-only ledger entry that can be replayed, audited and checked independently of the agent that produced it."
 readme = "README.md"
 license = "Apache-2.0"

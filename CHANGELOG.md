@@ -34,6 +34,17 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   upstream's Provenance paragraph is consumer-neutral, so the copy is
   byte-verbatim.
 
+## [0.6.2] - 2026-08-24
+
+### Changed
+
+- **`CLAUDE.md` re-initialized from the seed placeholder into a full runtime prompt** grounded in the repo as it exists on disk. Documents the CLI's three load-bearing contracts (the stdout/stderr split, the `CliError` → `_dispatch` → `emit_error` path, and the `_CliArgumentParser._json_hint` pre-argv scan that makes parse-time errors honour `--json`), a checklist for adding a verb or noun (the `rigor/explain/catalog.py` entry and the `learn.py` / `overview.py` updates are easy to miss and all three are rubric-enforced), the skill kit's cite-don't-import rule and provenance pointers, and the inherited conventions (version-bump-every-PR, the `cicd` lane, the `ask-colleague` reflex, `../.worktrees.rigor-cli/<name>/` worktrees, recall-before/remember-after memory discipline). States plainly that the ledger domain is unimplemented and files it under `## Roadmap` rather than documenting an architecture that does not exist.
+- **`README.md` corrected against checked-in reality** — the quickstart invoked `uv run rigor-cli`, which does not exist: `[project.scripts]` maps the console script to `rigor` while the dist name, argparse `prog`, and every help string say `rigor-cli`. Both the dist/script split and the leftover scaffold prose in `learn` / `explain` output are now called out instead of silently mis-documented. Skill count corrected 11 → 18. The `backend: colleague` line said `this template`; it is this agent. The `Make it your own` cloner instructions are replaced by `Status` (the ledger domain is not implemented yet) and `Development` (the lint set CI runs, version-bump-every-PR) — the rename sweep is complete, so nothing is left to rename.
+
+### Fixed
+
+- **Two documentation drifts recorded in `CLAUDE.md` so they stop costing time.** (1) `remember` / `recall` `SKILL.md` prose says records default to `--visibility private` in `~/.eidetic/memory`, but `scripts/remember.sh` defaults a suffix-resolved record to `--visibility public`, landing it in the committed `<repo-root>/.eidetic/memory` — the script is what runs, which changes what is safe to store. (2) `docs/skill-sources.md` documents 16 of the 18 vendored skills; `remember` and `recall` have no provenance row.
+
 ## [0.6.1] - 2026-07-20
 
 ### Added
